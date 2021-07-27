@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="image">
+    <a [routerLink]="['/data/detail', data.id]">
+      <img [src]="data.image" [alt]="data.name" class="card-img-top" />
+    </a>
+  </div>
+  <div class="card-inner">
+    <div class="header">
+      <a [routerLink]="['/data/detail', data.id]">
+        <h2>{{ data.name | slice: 0:15 }}</h2>
+      </a>
+      <h4 class="text-muted">
+        {{ data.gender }}
+      </h4>
+      <h4 class="text-muted">
+        {{ data.origin.name }}
+      </h4>
+      <!-- <ng-container *ngIf="detail"> -->
+      <div class="row">
+        <div class="col-6">
+          <ng-container *ngIf="data.status === 'Alive'">
+            <h5 class="badge bg-success text-white">{{ data.status }}</h5>
+          </ng-container>
+          <ng-container *ngIf="data.status === 'Dead'">
+            <h5 class="badge bg-danger text-white">{{ data.status }}</h5>
+          </ng-container>
+        </div>
+        <div class="col-6">
+          <h5 class="text-primary">{{ data.type }}</h5>
+        </div>
+      </div>
+      <!-- </ng-container> -->
+    </div>
+  </div>
+</div>

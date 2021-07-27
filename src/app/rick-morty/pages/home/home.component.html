@@ -1,0 +1,40 @@
+<div class="content__title">
+  <h1>{{ title | uppercase }}</h1>
+</div>
+<div class="container">
+  <div class="m-auto w-50 mt-4">
+    <app-search (onSearch)="handleSearch($event)"></app-search>
+  </div>
+  <div class="row mt-4">
+    <br />
+    <ng-container *ngIf="dataReady; else noData">
+      <div class="col-xs-12 col-sm-6 col-md-4 mt-5" *ngFor="let item of data">
+        <app-card-rick-morty [data]="item"></app-card-rick-morty>
+      </div>
+    </ng-container>
+    <br />
+    <ng-template #noData>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <p>Cargando información....</p>
+      </div>
+    </ng-template>
+  </div>
+  <div class="row mt-4">
+    <div class="col-2">
+      <button
+        class="btn btn-primary"
+        (click)="handlePage(-1)"
+        [disabled]="page === 1"
+      >
+        Anterior
+      </button>
+    </div>
+    <!-- <div class="col-8"></div> -->
+    <div class="col"></div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="handlePage(+1)">
+        Siguiente
+      </button>
+    </div>
+  </div>
+</div>
